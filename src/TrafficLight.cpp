@@ -81,6 +81,8 @@ void TrafficLight::cycleThroughPhases()
     // why 2 loop cycles???
 
     double random_duration_sec = distribution(generator);
+    //std::cout << "light duration: " << random_duration_sec;
+    
     // Start timer
     auto start = std::chrono::system_clock::now();
     double elapsed;
@@ -89,8 +91,10 @@ void TrafficLight::cycleThroughPhases()
     while (true)
     {
         elapsed = (std::chrono::system_clock::now() - start).count();
+        //std::cout << "elapsed time: " << elapsed;
 
-        if (elapsed >= random_duration_sec)
+
+        if (elapsed >= (random_duration_sec * 1000000000))    // convert random_duration_sec to nanoseconds
         {
             // if cycle count = 2
             // end timer and calculate the elapsed time of 2 loop cycles
@@ -101,7 +105,8 @@ void TrafficLight::cycleThroughPhases()
             _messageQueue.send(std::move(_currentPhase));
 
             start = std::chrono::system_clock::now();
-            random_duration_sec = distribution(generator);        
+            random_duration_sec = distribution(generator);
+            //std::cout << "light duration: " << random_duration_sec;     
         }
         // wait 1 ms
         std::this_thread::sleep_for(std::chrono::milliseconds(1));

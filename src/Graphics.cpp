@@ -15,6 +15,14 @@ void Graphics::simulate()
 
         // update graphics
         this->drawTrafficObjects();
+
+        // check if the window was closed
+        if (cv::getWindowProperty(_windowName, cv::WND_PROP_AUTOSIZE) == -1)
+        {
+            std::cout << "Closing...\n\n\n";
+            // window was closed, break out of the loop and end the program
+            break;
+        }
     }
 }
 

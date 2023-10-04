@@ -34,7 +34,7 @@ This project focuses on thread safety using mutexes, locks, and message queues.
       * Cmake will now recognize OpenCV dependencies.
   * Delete the OpenCV zip, extracted folder, and temporary build folder.
     * Navigate to the directory where the openCV zip was downloaded:
-    * `rm -rf opencv && rm -rf build && rm opencv.zip``
+    * `rm -rf opencv && rm -rf build && rm opencv.zip`
     
 * gcc/g++ >= 5.4
   * Linux: gcc / g++ is installed by default on most Linux distros
